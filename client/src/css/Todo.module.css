@@ -1,0 +1,26 @@
+#task {
+  display: flex;
+  align-items: center;
+  width: 345px;
+  justify-content: space-between;
+  color: white;
+  font-weight: bold;
+  height: 35px;
+  padding: 2px, 5px, 2px, 5px;
+}
+#card{
+    background-color: black;
+      margin: .5rem !important;
+
+}
+.line_through{
+  text-decoration: line-through;
+}
+
+.h2{
+    text-align: center;
+    color: white;
+}
+#p{
+  margin-top:.5rem;
+}

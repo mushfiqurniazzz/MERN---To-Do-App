@@ -6,7 +6,7 @@ const DB_Connection  = require('./db/dbConn');
 const app = express()
 app.use(cors())
 app.use(express.json())
-const router = require("./routes/route")
+const router = require("./routes/routes")
 
 //importing the database connection function
 DB_Connection()
