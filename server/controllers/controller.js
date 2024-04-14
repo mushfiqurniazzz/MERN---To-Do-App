@@ -1,8 +1,8 @@
 //importing the schema  and a library for performing secure operations with the database like delete, update, create and get todos
 const TodoModel = require("../Models/Todo");
 const UserModel = require("../Models/User")
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs")
+const token = require("../utils/jwt")
 require('dotenv').config();
 
 //this function adds todos to the database
@@ -84,12 +84,7 @@ async function userLogin(req, response) {
 
             if (isMatch) {
                 try {
-                    const token = jwt.sign(
-                        { id: foundUser._id, name: foundUser.name },
-                        process.env.JWT_SECRET,
-                        { expiresIn: "30d" }
-                    );
-                    return response.status(200).json({ msg: "user logged in", token });
+                    token() //using the created token function from utils jwt.js
 
                 } catch (error) {
                     console.error(error);
