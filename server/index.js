@@ -1,20 +1,15 @@
 //importing necessary libraries and functions
-require('dotenv').config(); 
+require('dotenv').config();
 const express = require("express")
 const cors = require("cors");
-const DB_Connection  = require('./db/dbConn');
+const DB_Server_Connection = require('./db/dbConn');
 const app = express()
 app.use(cors())
 app.use(express.json())
 const router = require("./routes/routes")
 
-//importing the database connection function
-DB_Connection()
-
 //importing the declared routes
 app.use(router)
 
-//make the app run on specefic port 
-app.listen(process.env.PORT, () => {
-    console.log(`Server running on http://localhost:${process.env.PORT}`)
-})
+//importing the database connection function and making the server listen if the database connection is successfull
+ DB_Server_Connection()
