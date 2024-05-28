@@ -44,7 +44,7 @@ function Signup() {
 
       <div className={"card"} id={styles.card}>
         <div className={"card-body"}>
-          <h2>Signup</h2>
+          <h2>SignUp</h2>
           <hr />
           <form onSubmit={handleSignup}>
             <div>
@@ -71,16 +71,16 @@ function Signup() {
             </div>
             {/* used the  button componenet with bootstrap success class or the green color*/}
             <Button className={"btn btn-outline-success"} type="submit">
-              Signup
+              SignUp
+            </Button>
+            
+            {/* used the button componenet with bootstrap danger class or red color*/}
+            <Button className={"btn btn-outline-danger"}>
+              <Link to="/login">LogIn</Link>
             </Button>
 
             {/* firebase OAuth component */}
             <OAuth />
-
-            {/* used the button componenet with bootstrap danger class or red color*/}
-            <Button className={"btn btn-outline-danger"}>
-              <Link to="/login">Login</Link>
-            </Button>
           </form>
         </div>
       </div>

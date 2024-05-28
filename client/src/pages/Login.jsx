@@ -55,7 +55,7 @@ function Login() {
         {/* used bootstrap card componenet with custom css */}
         <div className={"card"} id={styles.card}>
           <div className={"card-body"}>
-            <h2>Login</h2>
+            <h2>LogIn</h2>
             <hr />
             <form onSubmit={handleLogin}>
               <div>
@@ -86,16 +86,16 @@ function Login() {
                 className={"btn btn-outline-success"}
                 type="submit"
               >
-                Login
+                LogIn
+              </Button>
+              
+              {/* redirects to signup if user doesn't have account with bootstrap danger or red button*/}
+              <Button className={"btn btn-outline-danger"}>
+                <Link to="/signup">SignUp</Link>
               </Button>
 
               {/* firebase OAuth component */}
               <OAuth />
-
-              {/* redirects to signup if user doesn't have account with bootstrap danger or red button*/}
-              <Button className={"btn btn-outline-danger"}>
-                <Link to="/signup">Signup</Link>
-              </Button>
             </form>
           </div>
         </div>

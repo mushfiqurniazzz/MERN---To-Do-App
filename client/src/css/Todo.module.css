@@ -5,22 +5,25 @@
   justify-content: space-between;
   color: white;
   font-weight: bold;
-  height: 35px;
-  padding: 2px, 5px, 2px, 5px;
+  height: 40px;
+  padding: 2px, 5px, 2px, 5px !important;
 }
-#card{
-    background-color: black;
-      margin: .5rem !important;
 
+#card {
+  background-color: black;
+  margin: 0.5rem !important;
 }
-.line_through{
+
+.line_through {
   text-decoration: line-through;
+  margin-top: 0.8rem !important;
 }
 
-.h2{
-    text-align: center;
-    color: white;
+.h2 {
+  text-align: center;
+  color: white;
 }
-#p{
-  margin-top:.5rem;
+
+#p {
+  margin-top: 0.8rem !important;
 }

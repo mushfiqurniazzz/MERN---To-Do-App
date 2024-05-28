@@ -47,7 +47,8 @@ function OAuth() {
         className={"btn btn-outline-warning"}
         onClick={handleGoogleClick}
       >
-        Continue with Google
+        <i className="fa-brands fa-google" style={{ color: "#F3DB0A" }}></i>
+        &nbsp; Continue with Google
       </Button>
     </>
   );
