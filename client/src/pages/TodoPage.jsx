@@ -36,7 +36,6 @@ function TodoPage() {
     try {
       await axios.post("http://localhost:3001/add", { task });
       setTask(""); // Clear input field after adding task
-      fetchTodos(); // Fetch updated todos after adding a new one
     } catch (error) {
       console.error("Error adding todo:", error);
     }
