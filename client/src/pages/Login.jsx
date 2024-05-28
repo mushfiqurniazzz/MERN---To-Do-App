@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "../css/Login.module.css";
 import { Link, useHistory } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 //main function or page componenet
 function Login() {
@@ -87,15 +88,15 @@ function Login() {
               >
                 Login
               </Button>
+
+              {/* firebase OAuth component */}
+              <OAuth />
+
               {/* redirects to signup if user doesn't have account with bootstrap danger or red button*/}
               <Button className={"btn btn-outline-danger"}>
                 <Link to="/signup">Signup</Link>
               </Button>
             </form>
-            {/* incase of error show it with red highlighting */}
-            {error && (
-              <p style={{ color: "red" }}>Login failed. Please try again.</p>
-            )}
           </div>
         </div>
       </div>

@@ -113,34 +113,38 @@ async function googleAuth(req, res) {
   const { email, password } = req.body;
 
   //if the fields dont exist or  are empty
-  if (!email || email === "" || !password || password === "") {
+  if (!email || email === "") {
     //basic error handling
     return res.status(400).send("Missing Data in Data Field or Bad Request");
   }
   try {
     //incase the user is already saved
-    const UserExists = await UserModel.findOne({ email });
-    if (UserExists) {
+    const foundUser = await UserModel.findOne({ email });
+    console.log(email);
+    if (foundUser) {
       //send the token if the user is verified by the fire base and is save in the db
-      token();
-      return res.status(200).send("User Login Successfull");
+      token(foundUser, res);
+    } else {
+      //else case starts here
+      //generating a random password as the email will be verified by firebase and there wont be a neccessity of adding a password by the user instead we can complete that by generating a random password and saving it. NOTE : This password wont be used, just to keep the account safe in db we hash this random password
+      const generatedPassword =
+        Math.random().toString(36).slice(-8) +
+        Math.random().toString(36).slice(-8);
+
+      //saving it
+      const newUser = new UserModel({
+        email: req.body.email,
+        password: generatedPassword
+      });
+
+      await newUser.save();
+
+      //returning success message from the server
+      return res.status(200).send("User Created");
     }
-    //else case starts here
-    //generating a random password as the email will be verified by firebase and there wont be a neccessity of adding a password by the user instead we can complete that by generating a random password and saving it. NOTE : This password wont be used, just to keep the account safe in db we hash this random password
-    const generatedPassword =
-      Math.random().toString(36).slice(-8) +
-      Math.random().toString(36).slice(-8);
-
-    //saving it
-    const newUser = new UserModel({
-      email: req.body.email,
-      password: generatedPassword
-    });
-
-    await newUser.save();
   } catch (error) {
     //basic error handling
-    console.Error("Error during googleAuth function", error);
+    console.error("Error during googleAuth function", error);
     res.status(500).send("Error during googleAuth function");
   }
 }

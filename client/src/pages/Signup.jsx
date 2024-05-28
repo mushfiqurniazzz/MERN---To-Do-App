@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import styles from "../css/Signup.module.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import OAuth from "../components/OAuth";
 function Signup() {
   //defining states to use in send request and update with Signup functions
   const [email, setEmail] = useState("");
@@ -72,15 +73,15 @@ function Signup() {
             <Button className={"btn btn-outline-success"} type="submit">
               Signup
             </Button>
+
+            {/* firebase OAuth component */}
+            <OAuth />
+
             {/* used the button componenet with bootstrap danger class or red color*/}
             <Button className={"btn btn-outline-danger"}>
               <Link to="/login">Login</Link>
             </Button>
           </form>
-          {/* incase of error show it with red highlighting */}
-          {error && (
-            <p style={{ color: "red" }}>Signup failed. Please try again.</p>
-          )}
         </div>
       </div>
     </>
