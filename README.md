@@ -5,7 +5,7 @@
 
 1. <b>Clone the Repository</b>: Clone this repository to your local machine:
 
-    git clone <repository_url>
+    git clone [<repository_url>](https://github.com/mushfiqurniazzz/MERN---To-Do-App)
 
 2. <b>Navigate to Project Directory</b>: Move into the project directory:
 
