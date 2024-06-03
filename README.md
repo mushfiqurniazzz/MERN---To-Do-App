@@ -5,31 +5,27 @@
 
 1. <b>Clone the Repository</b>: Clone this repository to your local machine:
 
-    git clone https://github.com/mushfiqurniazzz/MERN---To-Do-App
+   git clone https://github.com/mushfiqurniazzz/MERN---To-Do-App
 
 2. <b>Navigate to Project Directory</b>: Move into the project directory:
 
-    cd <project_directory>
+   cd backend || frontend
 
 3. <b>Install Dependencies</b>: Install the necessary dependencies using npm or yarn:
 
-    npm install
+   npm install
 
-    or
+   or
 
-    yarn
+   yarn
 
-4. <b>Setup Environment Variables</b>: Create a `.env` file in the root of your project directory and add the following variables:
-
-    MONGODB_URI=your_mongodb_uri
-    PORT=5000
-    CLIENT_PORT=3000
-
-    Replace `your_mongodb_uri` with your MongoDB connection URI. Customize the `PORT` and `CLIENT_PORT` variables if needed.
+4. <b>Setup Environment Variables</b>: Create a `.env` file in the root of your project directory and add the variables mentioned in the `.env.sample`
 
 5. <b>Start the Development Server</b>: Run the following command to start the development server:
 
-    npm start
+   npm start
 
-6. <b>Access the App</b>: Open your web browser and navigate to `http://localhost:3000` to access the app. You can now use the app locally on your machine, connected to your MongoDB database using the URI specified in the `.env` file.
+6. <b>Access the App</b>: Open your web browser and navigate to `http://localhost:3000[server], http://localhost:5173[frontend]` to access the app. You can now use the app locally on your machine, connected to your MongoDB database using the URI specified in the `.env` file.
+
+7. <b>Note</b>: The project may not work if you do not install dependencies in both front end and backend. So you would have to apply step 2 and 3 twice, once in frontend and once in backend.
 </p>
