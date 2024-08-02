@@ -40,7 +40,6 @@ function Login() {
       {/* used module css that is why it has module extention */}
 
       <div className={styles.body}>
-        {/* used bootstrap card componenet with custom css */}
         <div className={"card"} id={styles.card}>
           <div className={"card-body"}>
             <h2>LogIn</h2>
@@ -48,7 +47,6 @@ function Login() {
             <form onSubmit={handleLogin}>
               <div>
                 <label>Email : </label>
-                {/* custom componenet input field */}
                 <input
                   type={"email"}
                   name="email"
@@ -59,7 +57,6 @@ function Login() {
               </div>
               <div>
                 <label>Password : </label>
-                {/* custom componenet input field */}
                 <input
                   type={"password"}
                   name="password"
@@ -68,7 +65,6 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              {/* custom componenet button with bootstrap sucess or green button*/}
               <button
                 id={styles.button}
                 className={"btn btn-outline-success"}
@@ -76,8 +72,6 @@ function Login() {
               >
                 LogIn
               </button>
-
-              {/* redirects to signup if user doesn't have account with bootstrap danger or red button*/}
               <button className={"btn btn-outline-danger"}>
                 <Link to="/signup">SignUp</Link>
               </button>

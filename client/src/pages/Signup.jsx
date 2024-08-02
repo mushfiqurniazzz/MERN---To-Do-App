@@ -39,7 +39,6 @@ function Signup() {
           <form onSubmit={handleSignup}>
             <div>
               <label>Email : </label>
-              {/* used input componenet */}
               <input
                 type={"email"}
                 name="email"
@@ -50,7 +49,6 @@ function Signup() {
             </div>
             <div>
               <label>Password : </label>
-              {/* used input componenet */}
               <input
                 type={"password"}
                 name="password"
@@ -59,12 +57,9 @@ function Signup() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            {/* used the  button componenet with bootstrap success class or the green color*/}
             <button className={"btn btn-outline-success"} type="submit">
               SignUp
             </button>
-
-            {/* used the button componenet with bootstrap danger class or red color*/}
             <button className={"btn btn-outline-danger"}>
               <Link to="/login">LogIn</Link>
             </button>
