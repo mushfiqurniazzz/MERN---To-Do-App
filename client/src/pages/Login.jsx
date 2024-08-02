@@ -1,8 +1,6 @@
 //importing components, function and libraries
-import Input from "../components/Input";
-import Button from "../components/Button";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "../css/Login.module.css";
 import { Link, useHistory } from "react-router-dom";
 import OAuth from "../components/OAuth";
@@ -12,9 +10,8 @@ function Login() {
   //defining states to use in send request and update with login functions
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [isLogin, setLogin] = useState(false);
   const history = useHistory();
+
   //login function with axios
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -29,22 +26,13 @@ function Login() {
       const token = response.data.token;
       localStorage.setItem("token", token);
 
-      // If there was no error, reset the error state
-      setError(false);
-      setLogin(true);
+      //if the compilar has reached this down without error push the user to home
+      history.push("/");
     } catch (error) {
       // Handle errors here
       console.log("Login failed:", error);
-      // Set error state to true
-      setError(true);
     }
   };
-  // after sucessful login will redirect to todo page
-  useEffect(() => {
-    if (isLogin) {
-      history.push("/");
-    }
-  }, [isLogin, history]);
 
   //rendering the web, value is something that access the input field [email is like get it and setEmail is like check changes and send to email same with password]
   return (
@@ -61,7 +49,7 @@ function Login() {
               <div>
                 <label>Email : </label>
                 {/* custom componenet input field */}
-                <Input
+                <input
                   type={"email"}
                   name="email"
                   placeholder={"Enter Email :"}
@@ -72,7 +60,7 @@ function Login() {
               <div>
                 <label>Password : </label>
                 {/* custom componenet input field */}
-                <Input
+                <input
                   type={"password"}
                   name="password"
                   placeholder={"Enter Password :"}
@@ -81,18 +69,18 @@ function Login() {
                 />
               </div>
               {/* custom componenet button with bootstrap sucess or green button*/}
-              <Button
+              <button
                 id={styles.button}
                 className={"btn btn-outline-success"}
                 type="submit"
               >
                 LogIn
-              </Button>
-              
+              </button>
+
               {/* redirects to signup if user doesn't have account with bootstrap danger or red button*/}
-              <Button className={"btn btn-outline-danger"}>
+              <button className={"btn btn-outline-danger"}>
                 <Link to="/signup">SignUp</Link>
-              </Button>
+              </button>
 
               {/* firebase OAuth component */}
               <OAuth />

@@ -3,8 +3,6 @@
 //importing the necessary functions, and libraries
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Input from "../components/Input";
-import Button from "../components/Button";
 import styles from "../css/Todo.module.css";
 import { useHistory } from "react-router-dom";
 //the componenet function declaration
@@ -12,8 +10,8 @@ function TodoPage() {
   //verifing if the user have a token or not
   const token = localStorage.getItem("token");
   const history = useHistory();
-  if (token == null) {
-    history.push("login");
+  if (token == null || !token) {
+    history.push("/login");
   }
   //declaring state for task and todos
   const [task, setTask] = useState("");
@@ -74,17 +72,15 @@ function TodoPage() {
       {/* used module css that is why it has module extention */}
       <div className={styles.home}>
         <h2 className={styles.h2}>Todo List</h2>
-        {/* using the input component we created */}
-        <Input
+        <input
           type="text"
           placeholder="Ex - 'Feed the cats'"
           value={task}
           onChange={(e) => setTask(e.target.value)}
         />
-        {/* using the button componenet we created */}
-        <Button onClick={handleAdd} className="btn btn-outline-primary">
+        <button onClick={handleAdd} className="btn btn-outline-primary">
           Add
-        </Button>
+        </button>
         <br />
         {/* this block of code is called ternory operation if the length of the todos is 0 it renders the code in the first parenthesis and if the length of todos is not 0 it renders the second parenthesis */}
         {todos.length === 0 ? (
@@ -97,7 +93,7 @@ function TodoPage() {
             // as you can see the card classname is added from bootstrap but theres also id it is because of some custom css that i have applied
             <div className={"card"} id={styles.card} key={todo._id}>
               <div id={styles.task}>
-                <Input
+                <input
                   className="form-check-input"
                   type="checkbox"
                   checked={todo.done}
@@ -112,7 +108,7 @@ function TodoPage() {
                 <div>
                   <span>
                     {/* just the delete button we also used fontawsome trash icon inside the bootstrap danger or red button className */}
-                    <Button
+                    <button
                       onClick={() => handleDelete(todo._id)}
                       className="btn btn-outline-danger"
                     >
@@ -120,7 +116,7 @@ function TodoPage() {
                         className="fas fa-trash-alt"
                         style={{ color: "#ffffff" }}
                       ></i>
-                    </Button>
+                    </button>
                   </span>
                 </div>
               </div>

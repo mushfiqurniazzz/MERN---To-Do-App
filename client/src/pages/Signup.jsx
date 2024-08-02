@@ -1,8 +1,6 @@
 //importing components, function and libraries
 import axios from "axios";
-import Button from "../components/Button";
-import Input from "../components/Input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "../css/Signup.module.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -11,8 +9,6 @@ function Signup() {
   //defining states to use in send request and update with Signup functions
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [isSignedUp, setIsSignedUp] = useState(false);
   const history = useHistory();
 
   //Signup function with axios
@@ -24,19 +20,13 @@ function Signup() {
         password
       });
       console.log(response.data);
-      setError(false);
-      setIsSignedUp(true);
+
+      //if the compiler has reached down this far without error we can navigate the user to login
+      history.push("/login");
     } catch (error) {
       console.log("Signup failed:", error);
-      setError(true);
     }
   };
-  //if user have alredy sign up or created account sucessfully redirect to login
-  useEffect(() => {
-    if (isSignedUp) {
-      history.push("/login");
-    }
-  }, [isSignedUp, history]);
 
   return (
     <>
@@ -50,7 +40,7 @@ function Signup() {
             <div>
               <label>Email : </label>
               {/* used input componenet */}
-              <Input
+              <input
                 type={"email"}
                 name="email"
                 placeholder={"Enter Email :"}
@@ -61,7 +51,7 @@ function Signup() {
             <div>
               <label>Password : </label>
               {/* used input componenet */}
-              <Input
+              <input
                 type={"password"}
                 name="password"
                 placeholder={"Enter Password :"}
@@ -70,14 +60,14 @@ function Signup() {
               />
             </div>
             {/* used the  button componenet with bootstrap success class or the green color*/}
-            <Button className={"btn btn-outline-success"} type="submit">
+            <button className={"btn btn-outline-success"} type="submit">
               SignUp
-            </Button>
-            
+            </button>
+
             {/* used the button componenet with bootstrap danger class or red color*/}
-            <Button className={"btn btn-outline-danger"}>
+            <button className={"btn btn-outline-danger"}>
               <Link to="/login">LogIn</Link>
-            </Button>
+            </button>
 
             {/* firebase OAuth component */}
             <OAuth />

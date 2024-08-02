@@ -3,7 +3,6 @@ import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import app from "../FireBase";
 import { useLocation, useHistory } from "react-router-dom";
 import axios from "axios";
-import Button from "./Button";
 
 //main component function
 function OAuth() {
@@ -42,14 +41,14 @@ function OAuth() {
   };
   return (
     <>
-      <Button
+      <button
         type="button"
         className={"btn btn-outline-warning"}
         onClick={handleGoogleClick}
       >
         <i className="fa-brands fa-google" style={{ color: "#F3DB0A" }}></i>
         &nbsp; Continue with Google
-      </Button>
+      </button>
     </>
   );
 }
