@@ -86,7 +86,7 @@ async function userLogin(req, res) {
 
       if (isMatch) {
         try {
-          token(); //using the created token function from utils jwt.js
+          token(foundUser, res); //using the created token function from utils jwt.js
         } catch (error) {
           console.error(error);
           return res
