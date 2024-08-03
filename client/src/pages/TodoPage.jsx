@@ -19,7 +19,9 @@ function TodoPage() {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/get");
+      const response = await axios.post("http://localhost:3001/get", {
+        token: token
+      });
       setTodos(response.data);
     } catch (error) {
       console.error("Error fetching todos:", error);
@@ -30,11 +32,14 @@ function TodoPage() {
   //fetching the todos from the server with axios
   useEffect(() => {
     fetchTodos();
-  }, []); // Empty dependency array to run once on mount
+  }); // Empty dependency array to run once on mount
   //function for creating e todo with axios
   const handleAdd = async () => {
     try {
-      await axios.post("http://localhost:3001/add", { task });
+      await axios.post("http://localhost:3001/add", {
+        task: task,
+        token: token
+      });
       setTask(""); // Clear input field after adding task
       fetchTodos();
     } catch (error) {
