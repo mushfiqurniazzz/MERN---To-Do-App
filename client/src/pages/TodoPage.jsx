@@ -71,7 +71,7 @@ function TodoPage() {
     <>
       {/* used module css that is why it has module extention */}
       <div className={styles.home}>
-        <h2 className={styles.h2}>Todo List</h2>
+        <h1 className={styles.h1}>Todo List</h1>
         <input
           type="text"
           placeholder="Ex - 'Feed the cats'"

@@ -1,7 +1,7 @@
 #task {
   display: flex;
   align-items: center;
-  width: 345px;
+  width: 310px;
   justify-content: space-between;
   color: white;
   font-weight: bold;
@@ -12,6 +12,7 @@
 #card {
   background-color: black;
   margin: 0.5rem !important;
+  text-align: center I !important;
 }
 
 .line_through {
@@ -19,9 +20,11 @@
   margin-top: 0.8rem !important;
 }
 
-.h2 {
+.h1 {
   text-align: center;
   color: white;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 #p {
