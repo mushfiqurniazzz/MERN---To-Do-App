@@ -76,6 +76,7 @@ function TodoPage() {
           type="text"
           placeholder="Ex - 'Feed the cats'"
           value={task}
+          id={styles.inputfield}
           onChange={(e) => setTask(e.target.value)}
         />
         <button onClick={handleAdd} className="btn btn-outline-primary">
@@ -85,7 +86,7 @@ function TodoPage() {
         {/* this block of code is called ternory operation if the length of the todos is 0 it renders the code in the first parenthesis and if the length of todos is not 0 it renders the second parenthesis */}
         {todos.length === 0 ? (
           <div>
-            <h2 className={styles.h2}>No Record</h2>
+            <h1 className={styles.h1}>No Record</h1>
           </div>
         ) : (
           // this is where the second condition starts from
@@ -96,6 +97,7 @@ function TodoPage() {
                 <input
                   className="form-check-input"
                   type="checkbox"
+                  id={styles.checkbox}
                   checked={todo.done}
                   onChange={(e) => handleEdit(todo._id, e.target.checked)}
                 />

@@ -26,7 +26,19 @@
   font-weight: bold;
   text-decoration: underline;
 }
-
+#inputfield {
+  background-color: #fad876;
+  border-radius: 5px;
+  height: 2.4rem;
+}
+#inputfield::placeholder {
+  color: white;
+  padding: 4px;
+}
+#checkbox {
+  margin: .1rem !important;
+  padding: 1rem !important;
+}
 #p {
   margin-top: 0.8rem !important;
 }
