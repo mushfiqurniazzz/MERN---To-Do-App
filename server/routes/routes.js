@@ -9,7 +9,7 @@ router.post("/login", userLogin)
 router.post("/google", googleAuth)
 router.post("/add", addToDo)
 router.delete("/delete/:id", deleteToDo)
-router.get("/get", getToDo)
+router.post("/get", getToDo)
 router.put("/update/:id", updateToDo)
 
 module.exports = router;

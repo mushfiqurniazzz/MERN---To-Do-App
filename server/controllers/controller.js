@@ -2,14 +2,25 @@
 const TodoModel = require("../Models/Todo");
 const UserModel = require("../Models/User");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const token = require("../utils/jwt");
 require("dotenv").config();
 
 //this function adds todos to the database
 async function addToDo(req, res) {
-  const task = req.body.task;
+  //the task and token will be retrieved from the req body
+  const { task, token } = req.body;
+
+  //decode the token recieved from the req body
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  //get hold of the id retrieved from the decoded function
+  const UserId = decoded.id;
+
+  //create a todo with the retrieved task and id
   TodoModel.create({
-    task: task
+    task: task,
+    UserId: UserId
   })
     .then(result => res.json(result))
     .catch(err => res.json(err));
@@ -25,7 +36,19 @@ async function deleteToDo(req, res) {
 
 //this function gets all the todos stored in the database
 async function getToDo(req, res) {
-  TodoModel.find().then(result => res.json(result)).catch(err => res.json(err));
+  //retrieve the token sent from the user in req body
+  const {token} = req.body;
+
+  //decode the token recieved from the req body
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  //get hold of the id retrieved from the decoded function
+  const UserId = decoded.id;
+
+  //find the todos with the user's id and send them to the user
+  TodoModel.find({ UserId: UserId })
+    .then(result => res.json(result))
+    .catch(err => res.json(err));
 }
 
 //this function updates todos stored in the database
