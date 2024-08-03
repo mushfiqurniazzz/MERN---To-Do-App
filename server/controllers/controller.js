@@ -37,7 +37,12 @@ async function deleteToDo(req, res) {
 //this function gets all the todos stored in the database
 async function getToDo(req, res) {
   //retrieve the token sent from the user in req body
-  const {token} = req.body;
+  const { token } = req.body;
+
+  //return an error message with status if not token was found or recieved
+  if (!token || token === "") {
+    return res.status(401).send("No token found, login first.");
+  }
 
   //decode the token recieved from the req body
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
