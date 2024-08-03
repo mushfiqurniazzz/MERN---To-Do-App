@@ -16,28 +16,30 @@ function TodoPage() {
   //declaring state for task and todos
   const [task, setTask] = useState("");
   const [todos, setTodos] = useState([]);
+
+  const fetchTodos = async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/get");
+      setTodos(response.data);
+    } catch (error) {
+      console.error("Error fetching todos:", error);
+    }
+  };
+
+  // Fetch todos when component mounts
   //fetching the todos from the server with axios
   useEffect(() => {
-    const fetchTodos = async () => {
-      try {
-        const response = await axios.get("http://localhost:3001/get");
-        setTodos(response.data);
-      } catch (error) {
-        console.error("Error fetching todos:", error);
-      }
-    };
-
-    fetchTodos(); // Fetch todos when component mounts
+    fetchTodos();
   }, []); // Empty dependency array to run once on mount
   //function for creating e todo with axios
   const handleAdd = async () => {
     try {
       await axios.post("http://localhost:3001/add", { task });
       setTask(""); // Clear input field after adding task
+      fetchTodos();
     } catch (error) {
       console.error("Error adding todo:", error);
     }
-    location.reload(); //to create a todo i am reloading the page but not for delete or edit
   };
   // function for marking the state of the todo true/false depending on it's id
   const handleEdit = async (id, isChecked) => {
