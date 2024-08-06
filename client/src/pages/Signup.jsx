@@ -31,42 +31,43 @@ function Signup() {
   return (
     <>
       {/* used module css that is why it has module extention with bootstrap*/}
+      <div id={styles.body}>
+        <div className={"card"} id={styles.card}>
+          <div className={"card-body"}>
+            <h2>SignUp</h2>
+            <hr />
+            <form onSubmit={handleSignup}>
+              <div>
+                <label>Email : </label>
+                <input
+                  type={"email"}
+                  name="email"
+                  placeholder={"Enter Email :"}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div>
+                <label>Password : </label>
+                <input
+                  type={"password"}
+                  name="password"
+                  placeholder={"Enter Password :"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <button className={"btn btn-outline-success"} type="submit">
+                SignUp
+              </button>
+              <button className={"btn btn-outline-danger"}>
+                <Link to="/login">LogIn</Link>
+              </button>
 
-      <div className={"card"} id={styles.card}>
-        <div className={"card-body"}>
-          <h2>SignUp</h2>
-          <hr />
-          <form onSubmit={handleSignup}>
-            <div>
-              <label>Email : </label>
-              <input
-                type={"email"}
-                name="email"
-                placeholder={"Enter Email :"}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Password : </label>
-              <input
-                type={"password"}
-                name="password"
-                placeholder={"Enter Password :"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <button className={"btn btn-outline-success"} type="submit">
-              SignUp
-            </button>
-            <button className={"btn btn-outline-danger"}>
-              <Link to="/login">LogIn</Link>
-            </button>
-
-            {/* firebase OAuth component */}
-            <OAuth />
-          </form>
+              {/* firebase OAuth component */}
+              <OAuth />
+            </form>
+          </div>
         </div>
       </div>
     </>

@@ -77,61 +77,63 @@ function TodoPage() {
   return (
     <>
       {/* used module css that is why it has module extention */}
-      <div className={styles.home}>
-        <h1 className={styles.h1}>Todo List</h1>
-        <input
-          type="text"
-          placeholder="Ex - 'Feed the cats'"
-          value={task}
-          id={styles.inputfield}
-          onChange={(e) => setTask(e.target.value)}
-        />
-        <button onClick={handleAdd} className="btn btn-outline-primary">
-          Add
-        </button>
-        <br />
-        {/* this block of code is called ternory operation if the length of the todos is 0 it renders the code in the first parenthesis and if the length of todos is not 0 it renders the second parenthesis */}
-        {todos.length === 0 ? (
-          <div>
-            <h1 className={styles.h1}>No Record</h1>
-          </div>
-        ) : (
-          // this is where the second condition starts from
-          todos.map((todo) => (
-            // as you can see the card classname is added from bootstrap but theres also id it is because of some custom css that i have applied
-            <div className={"card"} id={styles.card} key={todo._id}>
-              <div id={styles.task}>
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id={styles.checkbox}
-                  checked={todo.done}
-                  onChange={(e) => handleEdit(todo._id, e.target.checked)}
-                />
-                {/* if the checkk box has been clicked this code would be executed */}
-                {todo.done ? (
-                  <p className={styles.line_through}>{todo.task}</p>
-                ) : (
-                  <p id={styles.p}>{todo.task}</p>
-                )}
-                <div>
-                  <span>
-                    {/* just the delete button we also used fontawsome trash icon inside the bootstrap danger or red button className */}
-                    <button
-                      onClick={() => handleDelete(todo._id)}
-                      className="btn btn-outline-danger"
-                    >
-                      <i
-                        className="fas fa-trash-alt"
-                        style={{ color: "#ffffff" }}
-                      ></i>
-                    </button>
-                  </span>
+      <div id={styles.body}>
+        <div>
+          <h1 className={styles.h1}>Todo List</h1>
+          <input
+            type="text"
+            placeholder="Ex - 'Feed the cats'"
+            value={task}
+            id={styles.inputfield}
+            onChange={(e) => setTask(e.target.value)}
+          />
+          <button onClick={handleAdd} className="btn btn-outline-primary">
+            Add
+          </button>
+          <br />
+          {/* this block of code is called ternory operation if the length of the todos is 0 it renders the code in the first parenthesis and if the length of todos is not 0 it renders the second parenthesis */}
+          {todos.length === 0 ? (
+            <div>
+              <h1 className={styles.h1}>No Record</h1>
+            </div>
+          ) : (
+            // this is where the second condition starts from
+            todos.map((todo) => (
+              // as you can see the card classname is added from bootstrap but theres also id it is because of some custom css that i have applied
+              <div className={"card"} id={styles.card} key={todo._id}>
+                <div id={styles.task}>
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id={styles.checkbox}
+                    checked={todo.done}
+                    onChange={(e) => handleEdit(todo._id, e.target.checked)}
+                  />
+                  {/* if the checkk box has been clicked this code would be executed */}
+                  {todo.done ? (
+                    <p className={styles.line_through}>{todo.task}</p>
+                  ) : (
+                    <p id={styles.p}>{todo.task}</p>
+                  )}
+                  <div>
+                    <span>
+                      {/* just the delete button we also used fontawsome trash icon inside the bootstrap danger or red button className */}
+                      <button
+                        onClick={() => handleDelete(todo._id)}
+                        className="btn btn-outline-danger"
+                      >
+                        <i
+                          className="fas fa-trash-alt"
+                          style={{ color: "#ffffff" }}
+                        ></i>
+                      </button>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-body {
+#body {
   display: grid;
   place-items: center;
   height: 100vh;
@@ -38,4 +38,12 @@ input {
 #card a {
   text-decoration: none !important;
   color: white;
+}
+
+@media (max-width: 463px) {
+  #body {
+    display: grid;
+    height: 150vh;
+    width: 150%;
+  }
 }

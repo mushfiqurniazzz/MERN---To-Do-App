@@ -1,3 +1,13 @@
+#body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  margin: 0;
+  background-image: url(./images/bg.jpg);
+  background-position: center;
+  background-size: cover;
+}
 #task {
   display: flex;
   align-items: center;
@@ -8,18 +18,16 @@
   height: 40px;
   padding: 2px, 5px, 2px, 5px !important;
 }
-
 #card {
   background-color: black;
   margin: 0.5rem !important;
-  text-align: center I !important;
+  text-align: center !important;
 }
 
 .line_through {
   text-decoration: line-through;
   margin-top: 0.8rem !important;
 }
-
 .h1 {
   text-align: center;
   color: white;
@@ -36,7 +44,7 @@
   padding: 4px;
 }
 #checkbox {
-  margin: .1rem !important;
+  margin: 0.1rem !important;
   padding: 1rem !important;
 }
 #p {

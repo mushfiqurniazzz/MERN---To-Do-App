@@ -39,7 +39,7 @@ function Login() {
     <>
       {/* used module css that is why it has module extention */}
 
-      <div className={styles.body}>
+      <div id={styles.body}>
         <div className={"card"} id={styles.card}>
           <div className={"card-body"}>
             <h2>LogIn</h2>
