@@ -4,7 +4,9 @@ const express = require("express");
 const cors = require("cors");
 const DB_Server_Connection = require("./db/dbConn");
 const app = express();
-app.use(cors());
+app.use(cors({
+origin:"https://mern-to-do-app-client.vercel.app/"
+}));
 app.use(express.json());
 const router = require("./routes/routes");
 
