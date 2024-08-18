@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://mern-to-do-app-js1s-client.vercel.app/",
+    origin: "https://mern-to-do-app-js1s-client.vercel.app",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
     credentials: true
