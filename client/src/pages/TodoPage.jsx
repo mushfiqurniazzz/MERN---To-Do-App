@@ -19,9 +19,12 @@ function TodoPage() {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/get", {
-        token: token
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_API_PORT}/get`,
+        {
+          token: token,
+        }
+      );
       setTodos(response.data);
     } catch (error) {
       console.error("Error fetching todos:", error);
@@ -36,9 +39,9 @@ function TodoPage() {
   //function for creating e todo with axios
   const handleAdd = async () => {
     try {
-      await axios.post("http://localhost:3001/add", {
+      await axios.post(`${import.meta.env.VITE_REACT_APP_API_PORT}/add`, {
         task: task,
-        token: token
+        token: token,
       });
       setTask(""); // Clear input field after adding task
       fetchTodos();
@@ -49,9 +52,12 @@ function TodoPage() {
   // function for marking the state of the todo true/false depending on it's id
   const handleEdit = async (id, isChecked) => {
     try {
-      await axios.put(`http://localhost:3001/update/${id}`, {
-        done: isChecked
-      });
+      await axios.put(
+        `${import.meta.env.VITE_REACT_APP_API_PORT}/update/${id}`,
+        {
+          done: isChecked,
+        }
+      );
       const updatedTodos = todos.map((todo) => {
         if (todo._id === id) {
           return { ...todo, done: isChecked };
@@ -66,7 +72,9 @@ function TodoPage() {
   //deleting the todo with it's id
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/delete/${id}`);
+      await axios.delete(
+        `${import.meta.env.VITE_REACT_APP_API_PORT}/delete/${id}`
+      );
       const updatedTodos = todos.filter((todo) => todo._id !== id);
       setTodos(updatedTodos);
     } catch (error) {

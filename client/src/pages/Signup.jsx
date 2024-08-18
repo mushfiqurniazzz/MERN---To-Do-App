@@ -15,10 +15,13 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
     try {
-      const response = await axios.post("http://localhost:3001/signup", {
-        email,
-        password
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_API_PORT}/signup`,
+        {
+          email,
+          password,
+        }
+      );
       console.log(response.data);
 
       //if the compiler has reached down this far without error we can navigate the user to login

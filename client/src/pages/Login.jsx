@@ -16,9 +16,9 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
     try {
-      const response = await axios.post("http://localhost:3001/login", {
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API_PORT}/login`, {
         email,
-        password
+        password,
       });
 
       // Handle successful login response here

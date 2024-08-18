@@ -19,9 +19,12 @@ function OAuth() {
       const resultsFromGoogleAuth = await signInWithPopup(auth, provider);
 
       //axios post request and sending the used email back to the server
-      const res = await axios.post("http://localhost:3001/google", {
-        email: resultsFromGoogleAuth.user.email
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_API_PORT}/google`,
+        {
+          email: resultsFromGoogleAuth.user.email,
+        }
+      );
 
       console.log(res.data);
       const token = res.data.token;
