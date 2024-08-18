@@ -6,13 +6,15 @@ const DB_Server_Connection = require("./db/dbConn");
 const app = express();
 
 app.use(
-cors({
-  origin: "https://mern-to-do-app-client.vercel.app",
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type,Authorization",
-  credentials: true
-})
+  cors({
+    origin: "https://mern-to-do-app-client-2slorbbpy.vercel.app",
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
+    credentials: true
+  })
 );
+
+app.options('*', cors());
 
 app.use(express.json());
 const router = require("./routes/routes");
